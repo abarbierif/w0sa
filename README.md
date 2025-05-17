@@ -23,7 +23,7 @@
     └── utils
 ```
 
-##### 🚀 Installation
+##### 🔧 Deployment
 
 ```bash
 # Create and activate a virtual environment
@@ -34,7 +34,7 @@ source .venv/bin/activate
 pip install -e .
 ```
 
-##### 🧑‍💻 Usage
+###### 🧑‍💻 Usage
 
 ```bash
 # Launch de CLI
