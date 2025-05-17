@@ -1,0 +1,1 @@
+-e git+https://github.com/abarbierif/w0sa.git@e898d42642eaa0de2534dbc1d0da49378218da52#egg=w0sa
