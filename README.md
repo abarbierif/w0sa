@@ -17,26 +17,24 @@
 ├── tests
 └── w0sa
     ├── cli
-    ├── config
     ├── core
-    ├── gui
-    └── utils
+    └── gui
 ```
 
 ##### 🔧 Deployment
 
 ```bash
 # Create and activate a virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
+$ python3 -m venv .venv
+$ source .venv/bin/activate
 
 # Install the project in editable mode
-pip install -e .
+$ pip install -e .
 ```
 
-###### 🧑‍💻 Usage
+##### 🧑‍💻 Usage
 
 ```bash
 # Launch de CLI
-w0sa
+$ w0sa
 ```
