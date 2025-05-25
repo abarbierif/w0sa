@@ -1,6 +1,6 @@
 ## w0sa — Simulador de WSS + OSA
 
-[📘 English](README.md) | [📗 Español](README_es.md)
+[📘 English](README.md) | [📗 Español](README.es.md)
 
 `w0sa` es una herramienta basada en Python para simular la salida de un Analizador de Espectro Óptico (OSA) según la configuración de un Switch Selectivo en Longitud de Onda (WSS), sin necesidad de un OSA físico.
 
