@@ -1,4 +1,6 @@
-## 🧪 w0sa — WSS + OSA Simulator
+## w0sa — WSS + OSA Simulator
+
+[📘 English](README.md) | [📗 Español](README_es.md)
 
 `w0sa` is a Python-based tool to simulate the output of an Optical Spectrum Analyzer (OSA) based on configurable settings of a Wavelength Selective Switch (WSS), without requiring physical OSA.
 
@@ -21,7 +23,7 @@
     └── gui
 ```
 
-##### 🔧 Deployment
+##### 🔧 Installation (in development...)
 
 ```bash
 # Create and activate a virtual environment
@@ -38,3 +40,19 @@ $ pip install -e .
 # Launch de CLI
 $ w0sa
 ```
+
+##### Supported CLI Commands
+
+- `exit` — Exit the CLI
+
+- `clear` — Clear the terminal screen
+
+- `osa_show [-wv | -freq]` — Plot the optical spectrum (in wavelength or frequency)
+
+- `set_prt <port>:<power>` — Set input power for a port (in dBm)
+
+- `dcc <ch>=<start_slot>:<end_slot>; ...` — Define channel slot plans
+
+- `dcc_status` — Show current channel-slot mappings
+
+- `ura <ch>,<port>,<attenuation>; ...` — Route a port to a channel and apply attenuation
