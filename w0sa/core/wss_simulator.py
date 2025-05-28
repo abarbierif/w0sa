@@ -16,7 +16,7 @@ class WSSimulator:
     #MAX_WVL    = 1570.0   # nm
 
     # visualization params
-    SPECTRUM_MARGIN = 20
+    SPECTRUM_MARGIN = 50
 
     def __init__(self, ch_bw='flexigrid'):
         self.ch_bw = 12.5 if ch_bw=='flexigrid' else ch_bw # channel bandwidth in GHz
@@ -70,6 +70,17 @@ class WSSimulator:
                 _ += 1
             for _ in range(self.n_slots+WSSimulator.SPECTRUM_MARGIN,len(self.frecuencies)):
                 self.spectrum[self.frecuencies[_]] = 0.0
+
+        #Add noise
+        alpha = 0.1 #noise factor
+        alpha_margin = 0.8 # noise factor for margins (visualization)
+        
+        for n,(key,noise) in enumerate(zip(self.spectrum.keys(),np.random.normal(size=len(self.spectrum)))):
+            if n < WSSimulator.SPECTRUM_MARGIN or n >= len(self.spectrum)-WSSimulator.SPECTRUM_MARGIN:
+                self.spectrum[key] = (1-alpha_margin)*self.spectrum[key] + alpha_margin*noise
+            else:
+                self.spectrum[key] = (1-alpha)*self.spectrum[key] + alpha*noise
+                
 
 if '__main__' == __name__:
     pass
