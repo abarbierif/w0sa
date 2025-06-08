@@ -23,15 +23,12 @@ def dcc_gen(
         return
 
 
-    dcc_command = 'dcc '
+    dcc_command = 'DCC '
     for ch,sl in zip(range(1,channels+1),range(1,MAX_SLOTS,slots)):
-        if ch != channels:
-            dcc_command += str(ch) + '=' + str(sl) + ':' + str(sl+(slots-1)) + ';'
-        else:
-            dcc_command += str(ch) + '=' + str(sl) + ':' + str(sl+(slots-1))
+        dcc_command += str(ch) + '=' + str(sl) + ':' + str(sl+(slots-1)) + ';'
 
-    return dcc_command
+    return dcc_command[:-1]
 
 
 if '__main__' == __name__:
-    print(dcc_gen())
+    print(dcc_gen(channels=48,slots=8))
