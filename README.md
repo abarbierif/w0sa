@@ -7,7 +7,7 @@
 ##### 🎯 Goals
 
 - Emulate realistic OSA output in response to WSS configuration changes
-- Provide both a Command-Line Interface (CLI) and a GUI
+- Provide both a Command-Line Interface (CLI)
 
 ##### 📁 Project Structure
 
@@ -20,6 +20,7 @@
 └── w0sa
     ├── cli
     ├── core
+    ├── data
     └── gui
 ```
 
@@ -47,12 +48,20 @@ $ w0sa
 
 - `clear` — Clear the terminal screen
 
-- `osa_show [-wv | -freq]` — Plot the optical spectrum (in wavelength or frequency)
+- `OSA_SHOW [-wv | -freq | -save]` — Plot the optical spectrum (in wavelength or frequency)
 
-- `set_prt <port>:<power>` — Set input power for a port (in dBm)
+- `SETP <P#> -> <spectrum_id>` — Set input spectrum for a port (in dBm)
 
-- `dcc <ch>=<start_slot>:<end_slot>; ...` — Define channel slot plans
+- `DCC <ch>=<start_slot>:<end_slot>; ...` — Define channel slot plans
 
-- `dcc_status` — Show current channel-slot mappings
+- `DCCS` — Show current channel-slot mappings
 
-- `ura <ch>,<port>,<attenuation>; ...` — Route a port to a channel and apply attenuation
+- `URA <ch>,<port>,<attenuation>; ...` — Route a port to a channel and apply attenuation
+
+- `URAS` — Show current channel-port mappings
+
+- `RSW` — Update the WSS with the reconfigured channel plan
+
+- `DCCG` — Generate a default DCC command
+
+- `URAG <spectrum_id>` — Generate a URA command from an output spectrum
