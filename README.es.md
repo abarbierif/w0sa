@@ -7,7 +7,7 @@
 ##### 🎯 Objetivos
 
 - Emular de forma realista la salida de un OSA ante cambios en la configuración del WSS
-- Proveer tanto una interfaz de línea de comandos (CLI) como una GUI
+- Proveer tanto una interfaz de línea de comandos (CLI)
 
 ##### 📁 Estructura del Proyecto
 
@@ -15,11 +15,13 @@
 .
 ├── pyproject.toml
 ├── README.md
+├── README.es.md
 ├── requirements.txt
 ├── tests
 └── w0sa
     ├── cli
     ├── core
+    ├── data
     └── gui
 ```
 
@@ -43,16 +45,24 @@ $ w0sa
 
 ##### Comandos Soportados
 
-- `exit` — Salir de la CLI
+- `exit` — Salir de la terminal
 
-- `clear` — Limpiar la pantalla de la terminal
+- `clear` — Limpiar la terminal
 
-- `osa_show [-wv | -freq]` — Mostrar el espectro (`-wv` para longitud de onda, `-freq` para frecuencia)
+- `OSA_SHOW [-wv | -freq | -save]` — Mostrar el espectro óptico (en longitud de onda o frecuencia)
 
-- `set_prt <port>:<power>` — Definir potencia (dBm) de entrada en un puerto del WSS
+- `SETP <P#> -> <spectrum_id>` — Asociar un espectro de entrada a un puerto (in dBm)
 
-- `dcc <ch>=<start_slot>:<end_slot>; ...` — Definir rangos de slots por canal (Plan de Canales)
+- `DCC <ch>=<start_slot>:<end_slot>; ...` — Definir el plan de canales
 
-- `dcc_status` — Ver el mapeo actual de canales a slots
+- `DCCS` — Mostrar el mapeo canal-slot actual
 
-- `ura <ch>,<port>,<attenuation>; ...` — Asociar puertos de entrada a canales con atenuación
+- `URA <ch>,<port>,<attenuation>; ...` — Rutear un puerto a un canal y aplicar atenuación
+  
+- `URAS` — Mostrar el mapeo canal-puerto actual
+
+- `RSW` — Actualizar el WSS con el plan de canales reconfigurado
+
+- `DCCG` — Generar un comando DCC por defecto
+
+- `URAG <spectrum_id>` — Generar un comando URA desde un spectro de salida
