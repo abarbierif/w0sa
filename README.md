@@ -15,6 +15,7 @@
 .
 ├── pyproject.toml
 ├── README.md
+├── README.es.md
 ├── requirements.txt
 ├── tests
 └── w0sa
