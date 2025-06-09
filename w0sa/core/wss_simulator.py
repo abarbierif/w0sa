@@ -3,6 +3,8 @@ from w0sa.utils.conversions import *
 from w0sa.utils.numeric import *
 from w0sa.utils.spectrum_reader import *
 from w0sa.utils.spectrum_resample import *
+from w0sa.utils.dcc_generator import *
+from w0sa.utils.ura_generator import *
 import copy
 
 class WSSimulator:
@@ -14,7 +16,7 @@ class WSSimulator:
     MAX_CHANNEL_POWER = 27.0                # dBm
     MAX_SLOT_POWER = 9.0                    # dBm
     MAX_ATTENUATION = 20.0                  # dBm
-    MIN_ATTENUATION = 0.0                    # dBm
+    MIN_ATTENUATION = 0.0                   # dBm
 
     C = 299792458                           # light speed m/s
 
@@ -27,11 +29,11 @@ class WSSimulator:
 
     def __init__(self):
         self.spectrum = {}
-        self.frecuencies = [format_key(_) for _ in frange(WSSimulator.MIN_FREQ-GHz2THz(WSSimulator.WSS_RESOLUTION), WSSimulator.MAX_FREQ+GHz2THz(WSSimulator.WSS_RESOLUTION), GHz2THz(WSSimulator.WSS_RESOLUTION))] # THz
+        self.frequencies = [format_key(_) for _ in frange(WSSimulator.MIN_FREQ-GHz2THz(WSSimulator.CHANNEL_BANDWIDTH), WSSimulator.MAX_FREQ+GHz2THz(WSSimulator.CHANNEL_BANDWIDTH), GHz2THz(WSSimulator.WSS_RESOLUTION))] # THz
         
-        self.slots = {sl:{'fqi':self.frecuencies[fq],'fqc':self.frecuencies[fq+1],'fqf':self.frecuencies[fq+2]} for sl,fq in zip(range(1,WSSimulator.SLOTS_NUM+1),range(0,len(self.frecuencies)-2,2))}
+        self.slots = {sl:{'fqi':self.frequencies[fq],'fqc':self.frequencies[fq+1],'fqf':self.frequencies[fq+2]} for sl,fq in zip(range(1,WSSimulator.SLOTS_NUM+1),range(0,len(self.frequencies)-2,2))}
         
-        self.none_spectrum = {fq:0.0 for fq in self.frecuencies}
+        self.none_spectrum = {fq:0.0 for fq in self.frequencies}
         self.ports = {'P'+str(_):{'spectrum_id':None,'spectrum':None} for _ in range(1,WSSimulator.MAX_PORTS+1)}
 
         self.channels = {ch:{'sli':sli,'slf':sli+3,'prt':None,'atn':None} for ch,sli in zip(range(1,97),range(1,382,4))} # default channels plan
@@ -76,31 +78,43 @@ class WSSimulator:
 
                     self.spectrum[fq] = fq_pwr
 
-            #for sl in range(self.channels[ch]['sli'], self.channels[ch]['slf']+1):
-            #    for fq in self.slots[sl].keys():
-            #        if self.ports[self.channels[ch]['prt']] == None:
-            #            if WSSimulator.MIN_ATTENUATION <= self.channels[ch]['atn'] <= WSSimulator.MAX_ATTENUATION:
-            #                if self.none_spectrum[self.slots[sl][fq]] - self.channels[ch]['atn'] <= WSSimulator.MAX_SLOT_POWER:
-            #                    self.spectrum[self.slots[sl][fq]] = self.none_spectrum[self.slots[sl][fq]] - self.channels[ch]['atn']
-            #                else:
-            #                    self.spectrum[self.slots[sl][fq]] = self.none_spectrum[self.slots[sl][fq]] - self.channels[ch]['atn']
-            #                    print(f"WARNING: MAX SLOT POWER ({WSSimulator.MAX_SLOT_POWER}) EXCEEDED: {self.spectrum[self.slots[sl][fq]]}")
-            #            else:
-            #                self.spectrum[self.slots[sl][fq]] = self.none_spectrum[self.slots[sl][fq]] - WSSimulator.MAX_ATTENUATION
-            #                print(f"WARNING: MAX ATTENUATION ({WSSimulator.MAX_ATTENUATION}) EXCEEDED: MAX ATTENUATION WAS APPLIED TO FREQUENCY {self.slots[sl][fq]}")
-            #        else:
-            #            if WSSimulator.MIN_ATTENUATION <= self.channels[ch]['atn'] <= WSSimulator.MAX_ATTENUATION:
-            #                if self.ports[self.channels[ch]['prt']][self.slots[sl][fq]] - self.channels[ch]['atn'] <= WSSimulator.MAX_SLOT_POWER:
-            #                    self.spectrum[self.slots[sl][fq]] = self.ports[self.channels[ch]['prt']][self.slots[sl][fq]] - self.channels[ch]['atn']
-            #                else:
-            #                    self.spectrum[self.slots[sl][fq]] = self.ports[self.channels[ch]['prt']][self.slots[sl][fq]] - self.channels[ch]['atn']
-            #                    print(f"WARNING: MAX SLOT POWER ({WSSimulator.MAX_SLOT_POWER}) EXCEEDED: {self.spectrum[self.slots[sl][fq]]}")
-            #            else:
-            #                self.spectrum[self.slots[sl][fq]] = self.ports[self.channels[ch]['prt']][self.slots[sl][fq]] - WSSimulator.MAX_ATTENUATION 
-            #                print(f"WARNING: MAX ATTENUATION ({WSSimulator.MAX_ATTENUATION}) EXCEEDED: MAX ATTENUATION WAS APPLIED TO FREQUENCY {self.slots[sl][fq]}")
-                
+    def get_dcc(self):
+        print(dcc_gen())
+
+    def get_ura(self, spectrum_id: str = None):
+
+        center_frequencies = [format_key(_) for _ in frange(WSSimulator.MIN_FREQ-GHz2THz(WSSimulator.WSS_RESOLUTION), WSSimulator.MAX_FREQ+GHz2THz(WSSimulator.WSS_RESOLUTION), GHz2THz(WSSimulator.CHANNEL_BANDWIDTH))] # THz
+        
+        out_spectrum = resample_spectrum(spectrum=read_spectrum(spectrum_id=spectrum_id, get_info=False)[0], freq=True)
+        ports = []
+        attenuations = []
+        for fq in center_frequencies:
+            pwr_diffs = {}
+            for prt,prt_config in self.ports.items():
+                if prt_config['spectrum_id'] is not None:
+                    prt_pwr = prt_config['spectrum'][fq]
+                    out_pwr = out_spectrum[fq]
+                    if prt_pwr > out_pwr:
+                        pwr_diff = abs(prt_pwr - out_pwr)
+                        pwr_diffs[prt] = pwr_diff
+
+            prt = min(pwr_diffs, key=pwr_diffs.get)
+            atn = pwr_diffs[prt]
+
+            ports.append(prt[-1])
+            attenuations.append(atn)
+
+        ura_command = ura_gen(channels=386,ports=ports,attenuations=attenuations)
+
+        print(ura_command)
+
 
 if '__main__' == __name__:
-    #print(WSSimulator().frecuencies)
-    #print(WSSimulator().slots)
+    print(WSSimulator().frequencies)
+    print(WSSimulator().slots)
+    ## get_ura testing ##
+    #sim = WSSimulator()
+    #sim.prt_pwr_set(prt='P2',sid='default')
+    #sim.get_ura(spectrum_id='CWDM')
+    #sim.get_dcc()
     pass

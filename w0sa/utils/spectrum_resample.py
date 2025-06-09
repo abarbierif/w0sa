@@ -9,7 +9,7 @@ def resample_spectrum(spectrum: dict, period: float = 6.25, freq: bool = False) 
     C = 299792458 # light speed m/s
 
     frecuencies = [Hz2THz(C/nm2m(float(wv))) for wv in spectrum.keys()] # THz
-    resampled_frecuencies = [fq for fq in frange(int(frecuencies[-1]), int(frecuencies[0]+1), GHz2THz(period))] # THz
+    resampled_frecuencies = [fq for fq in frange(int(frecuencies[-1]), int(frecuencies[0])+1, GHz2THz(period))] # THz
 
     interpoled_amplitude = np.interp(resampled_frecuencies, frecuencies[::-1], list(spectrum.values())[::-1])
 

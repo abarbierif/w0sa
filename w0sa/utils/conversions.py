@@ -19,7 +19,10 @@ def nm2m(nm: float) -> float:
     return nm / 1e+09
 
 def mW2dBm(mw: float) -> float:
-    return 10 * np.log10(mw)
+    if mw <= 0:
+        return 10 * np.log10(1e-12)
+    else:
+        return 10 * np.log10(mw)
 
 def dBm2mW(dbm: float) -> float:
     return 10 ** (dbm / 10)

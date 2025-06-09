@@ -8,7 +8,7 @@ def compare_spectrum(spectrum_id0: str, spectrum_id1: str):
 
     fig, ax = plt.subplots(1,1,figsize=(5,5),layout='constrained')
     ax.plot([float(key) for key in spectrum0.keys()], spectrum0.values())
-    ax.plot([float(key) for key in spectrum1.keys()], spectrum1.values())
+    ax.plot([float(key) for key in spectrum1.keys()], [pwr for pwr in spectrum1.values()])
 
     plt.show()
 

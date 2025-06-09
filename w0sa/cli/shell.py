@@ -170,3 +170,19 @@ class W0SAShell(cmd.Cmd):
             status += str(ch) + ',' + (str(ch_config['prt'])[1:] if ch_config['prt'] is not None else str(ch_config['prt'])) + ',' + str(ch_config['atn']) + ';'
 
         print(status[:-1])
+
+    def do_DCCG(self, arg):
+        """EN: Generates a default DCC command.\mES: Genera un comando DCC por defecto.\n\n - Syntax: DCCG\n - 386 channels\n - 1 slot each channel\n\n Example:\n > DCCG"""
+        
+        self.sim.get_dcc()
+
+    def do_URAG(self, arg):
+        """EN:Generates an URA command from an output spectrum.\nES: Genera un comando URA desde un espectro de salida.\n\n - Syntax: URAG <spectrum_id>\n\n Example:\n > URAG DWDM"""
+        
+        spectrum_id = arg.strip()
+        valid_ids = set(SPECTRUM_INPUTS.keys())
+        if spectrum_id not in valid_ids:
+            print("Error: invalid spectrum id")
+            return
+
+        self.sim.get_ura(spectrum_id=spectrum_id)
