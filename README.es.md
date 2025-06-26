@@ -7,52 +7,31 @@
 ##### 🎯 Objetivos
 
 - Emular de forma realista la salida de un OSA ante cambios en la configuración del WSS
-- Proveer tanto una interfaz de línea de comandos (CLI) como una GUI
+- Proveer una interfaz de línea de comandos (CLI)
 
 ##### 📁 Estructura del Proyecto
 
 ```bash
 .
-├── pyproject.toml
+├── calibration
+├── cli
+├── core
+├── data
+├── README.es.md
 ├── README.md
 ├── requirements.txt
-├── tests
-└── w0sa
-    ├── cli
-    ├── core
-    └── gui
+├── utils
+└── w0sa.py
 ```
 
-##### 🔧 Instalación (en desarrollo...)
+##### 🔧 Instalación
 
 ```bash
 # Create and activate a virtual environment
 $ python3 -m venv .venv
 $ source .venv/bin/activate
+$ pip install -r requirements.txt
 
-# Install the project in editable mode
-$ pip install -e .
+# Launch w0sa
+$ python3 w0sa.py
 ```
-
-##### 🧑‍💻 Uso
-
-```bash
-# Launch de CLI
-$ w0sa
-```
-
-##### Comandos Soportados
-
-- `exit` — Salir de la CLI
-
-- `clear` — Limpiar la pantalla de la terminal
-
-- `osa_show [-wv | -freq]` — Mostrar el espectro (`-wv` para longitud de onda, `-freq` para frecuencia)
-
-- `set_prt <port>:<power>` — Definir potencia (dBm) de entrada en un puerto del WSS
-
-- `dcc <ch>=<start_slot>:<end_slot>; ...` — Definir rangos de slots por canal (Plan de Canales)
-
-- `dcc_status` — Ver el mapeo actual de canales a slots
-
-- `ura <ch>,<port>,<attenuation>; ...` — Asociar puertos de entrada a canales con atenuación
