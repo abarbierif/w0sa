@@ -13,15 +13,16 @@
 
 ```bash
 .
-├── calibration
-├── cli
-├── core
-├── data
+├── pyproject.toml
 ├── README.es.md
 ├── README.md
-├── requirements.txt
-├── utils
-└── w0sa.py
+└── w0sa
+    ├── calibration
+    ├── cli
+    ├── core
+    ├── data
+    ├── utils
+    └── w0sa.py
 ```
 
 ##### 🔧 Installation
