@@ -30,8 +30,8 @@
 # Create and activate a virtual environment
 $ python3 -m venv .venv
 $ source .venv/bin/activate
-$ pip install -r requirements.txt
+$ pip install -e .
 
 # Launch w0sa
-$ python3 w0sa.py
+$ w0sa
 ```
