@@ -13,15 +13,16 @@
 
 ```bash
 .
-├── calibration
-├── cli
-├── core
-├── data
+├── pyproject.toml
 ├── README.es.md
 ├── README.md
-├── requirements.txt
-├── utils
-└── w0sa.py
+└── w0sa
+    ├── calibration
+    ├── cli
+    ├── core
+    ├── data
+    ├── utils
+    └── w0sa.py
 ```
 
 ##### 🔧 Instalación
@@ -30,8 +31,8 @@
 # Create and activate a virtual environment
 $ python3 -m venv .venv
 $ source .venv/bin/activate
-$ pip install -r requirements.txt
+$ pip install -e .
 
 # Launch w0sa
-$ python3 w0sa.py
+$ w0sa
 ```
