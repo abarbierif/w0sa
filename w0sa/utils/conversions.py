@@ -19,7 +19,28 @@ def nm2m(nm: float) -> float:
     return nm / 1e+09
 
 def mW2dBm(mw: float) -> float:
-    return 10 * np.log10(mw)
+    if mw <= 0:
+        return 10 * np.log10(1e-12)
+    else:
+        return 10 * np.log10(mw)
 
 def dBm2mW(dbm: float) -> float:
     return 10 ** (dbm / 10)
+
+def uW2dBm(uw: float) -> float:
+    mw = uw / 1000
+    return mW2dBm(mw=mw)
+
+def dBm2uW(dbm: float) -> float:
+    return (10 ** (dbm / 10)) * 1000
+
+if '__main__' == __name__:
+    mw = 201.1
+    print(mW2dBm(mw=mw), 'dB')
+    print()
+    #print(uW2dBm(uw=201.1), 'dBm')
+    print(mW2dBm(mw=201.1), 'dB')
+    print(mW2dBm(mw=606.67), 'dB')
+    #print(dBm2uW(dbm=23.03), 'mW')
+    print(dBm2mW(dbm=23.03))
+    print(dBm2mW(dbm=27.82))

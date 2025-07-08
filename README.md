@@ -7,52 +7,32 @@
 ##### 🎯 Goals
 
 - Emulate realistic OSA output in response to WSS configuration changes
-- Provide both a Command-Line Interface (CLI) and a GUI
+- Provide a Command-Line Interface (CLI)
 
 ##### 📁 Project Structure
 
 ```bash
 .
 ├── pyproject.toml
+├── README.es.md
 ├── README.md
-├── requirements.txt
-├── tests
 └── w0sa
+    ├── calibration
     ├── cli
     ├── core
-    └── gui
+    ├── data
+    ├── utils
+    └── w0sa.py
 ```
 
-##### 🔧 Installation (in development...)
+##### 🔧 Installation
 
 ```bash
 # Create and activate a virtual environment
 $ python3 -m venv .venv
 $ source .venv/bin/activate
-
-# Install the project in editable mode
 $ pip install -e .
-```
 
-##### 🧑‍💻 Usage
-
-```bash
-# Launch de CLI
+# Launch w0sa
 $ w0sa
 ```
-
-##### Supported CLI Commands
-
-- `exit` — Exit the CLI
-
-- `clear` — Clear the terminal screen
-
-- `osa_show [-wv | -freq]` — Plot the optical spectrum (in wavelength or frequency)
-
-- `set_prt <port>:<power>` — Set input power for a port (in dBm)
-
-- `dcc <ch>=<start_slot>:<end_slot>; ...` — Define channel slot plans
-
-- `dcc_status` — Show current channel-slot mappings
-
-- `ura <ch>,<port>,<attenuation>; ...` — Route a port to a channel and apply attenuation

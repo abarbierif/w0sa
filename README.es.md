@@ -7,36 +7,32 @@
 ##### 🎯 Objetivos
 
 - Emular de forma realista la salida de un OSA ante cambios en la configuración del WSS
-- Proveer tanto una interfaz de línea de comandos (CLI) como una GUI
+- Proveer una interfaz de línea de comandos (CLI)
 
 ##### 📁 Estructura del Proyecto
 
 ```bash
 .
 ├── pyproject.toml
+├── README.es.md
 ├── README.md
-├── requirements.txt
-├── tests
 └── w0sa
+    ├── calibration
     ├── cli
     ├── core
-    └── gui
+    ├── data
+    ├── utils
+    └── w0sa.py
 ```
 
-##### 🔧 Instalación (en desarrollo...)
+##### 🔧 Instalación
 
 ```bash
 # Create and activate a virtual environment
 $ python3 -m venv .venv
 $ source .venv/bin/activate
-
-# Install the project in editable mode
 $ pip install -e .
-```
 
-##### 🧑‍💻 Uso
-
-```bash
-# Launch de CLI
+# Launch w0sa
 $ w0sa
 ```
