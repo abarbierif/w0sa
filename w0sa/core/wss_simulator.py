@@ -9,11 +9,15 @@ import copy
 import numpy as np
 
 class WSSimulator:
+    """
+    WSSimulator class simulates a real WSS.
+    """
+
 
     MAX_PORTS = 9
     CHANNEL_BANDWIDTH = 12.5                # GHz (flexigri)
     WSS_RESOLUTION = CHANNEL_BANDWIDTH / 2
-    SLOTS_NUM = 386 
+    SLOTS_NUM = 386
     MAX_CHANNEL_POWER = 27.0                # dBm
     MAX_SLOT_POWER = 9.0                    # dBm
     MAX_ATTENUATION = 20.0                  # dBm
@@ -41,10 +45,16 @@ class WSSimulator:
 
 
     def prt_pwr_set(self, prt: int, sid: float):
+        """
+        Sets an input optical spectrum to a port.
+        """
         self.ports[prt]['spectrum_id'] = sid
         self.ports[prt]['spectrum'] = resample(spectrum=read_spectrum(spectrum_id=sid, get_info=False, dbm=False)[0], freq=True)
 
     def dcc_set(self, ch: int, sli: int, slf: int):
+        """
+        Defines a channel plan.
+        """
         if ch not in self.channels:
             self.channels[ch] = {'sli':sli,'slf':slf,'prt':None,'atn':0.0}
         else:
@@ -52,10 +62,16 @@ class WSSimulator:
             self.channels[ch]['slf'] = slf
 
     def ura_set(self, ch: int, prt: str, atn: float):
+        """
+        Assgins channels to ports and defines attenuations.
+        """
         self.channels[ch]['prt'] = prt
         self.channels[ch]['atn'] = atn
 
     def get_spectrum(self):
+        """
+        Generates the output spectrum.
+        """
 
         for ch,ch_config in self.channels.items():
             prt = ch_config['prt'] 
@@ -80,9 +96,15 @@ class WSSimulator:
                     self.spectrum[fq] = fq_pwr
 
     def get_dcc(self):
+        """
+        Generates a DCC command.
+        """
         print(dcc_gen())
 
     def get_ura(self, spectrum_id: str = None):
+        """
+        Generates an URA command.
+        """
 
         center_frequencies = [format_key(_) for _ in frange(WSSimulator.MIN_FREQ-GHz2THz(WSSimulator.WSS_RESOLUTION), WSSimulator.MAX_FREQ+GHz2THz(WSSimulator.WSS_RESOLUTION), GHz2THz(WSSimulator.CHANNEL_BANDWIDTH))] # THz
         

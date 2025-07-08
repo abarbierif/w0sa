@@ -8,6 +8,9 @@ import matplotlib.pyplot as plt
 
 
 class Calibration:
+    """
+    Calibration class performs the necessary calibration process to reach real output data.
+    """
 
     C = 299792458                                                               # m/s (light speed in air/vacuum) 
 
@@ -20,6 +23,9 @@ class Calibration:
         self.attenuation = Calibration._DEFAULT_ATTENUATION
 
     def get_attenuation(self, in_res: float = None, out_res: float = None):
+        """
+        Computes the neccesary power calibration based on input resolution (EDFA resolution) and the desired OSA output resolution.
+        """
 
         in_atn = 10*np.log10(Calibration._DEFAULT_RESOLUTION/in_res) if Calibration._DEFAULT_RESOLUTION >= in_res else 10*np.log10(in_res/Calibration._DEFAULT_RESOLUTION)
         out_atn = 10*np.log10(Calibration._DEFAULT_RESOLUTION/out_res) if Calibration._DEFAULT_RESOLUTION >= out_res else 10*np.log10(out_res/Calibration._DEFAULT_RESOLUTION)

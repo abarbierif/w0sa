@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Primeros pasos &#8212; w0sa 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=a1637f0b"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Arquitectura" href="technical_ref.html" />
+    <link rel="prev" title="Instalación" href="installation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">w0sa 0.1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalación</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Primeros pasos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical_ref.html">Arquitectura</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/getting_started.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Primeros pasos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="primeros-pasos">
+<h1>Primeros pasos<a class="headerlink" href="#primeros-pasos" title="Link to this heading">#</a></h1>
+<p>En esta sección se presenta un flujo tradicional de comandos usados en un WSS para poner manos a la obra con <strong>w0sa</strong>.</p>
+<p>Lanza <strong>w0sa</strong> con (no olvides activar el entorno virtual):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>w0sa
+</pre></div>
+</div>
+<p>Para acceder a los comandos disponibles tipea <code class="docutils literal notranslate"><span class="pre">help</span></code> y para ayuda sobre algún comando en particular <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">&lt;command&gt;</span></code>. <strong>w0sa</strong> utiliza como entrada espectros ópticos extraidos desde un OSA real como archivos <cite>csv</cite>. Por lo tanto, el primer paso es asignar algún espectro con uno de los 9 puertos disponibles en el WSS. Con <code class="docutils literal notranslate"><span class="pre">ls_ports</span></code> se lista el estado actual de los puertos y con <code class="docutils literal notranslate"><span class="pre">ls_spectrums</span></code> es posible ver los espectros disponibles para asignar como entrada. Actualmente, los espectros disponibles de entrada siguen el formato de nombre: <code class="docutils literal notranslate"><span class="pre">EDFA&lt;current[mA]_r&lt;OSA_resolution[nm]&gt;_s&lt;OSA_span[nm]&gt;</span></code>, donde <code class="docutils literal notranslate"><span class="pre">&lt;current[mA]&gt;</span></code> es la corriente de bombeo del <a class="reference external" href="https://www.thorlabs.com/thorproduct.cfm?partnumber=EDFA100S">EDFA</a>, <code class="docutils literal notranslate"><span class="pre">OSA_resolution[nm]</span></code> y <code class="docutils literal notranslate"><span class="pre">OSA_span[nm]</span></code> corresponden a la resolución y span del OSA con los cuales fue extraido el espectro (archivo <code class="docutils literal notranslate"><span class="pre">csv</span></code>) respectivamente.</p>
+<p>El siguiente comando asigna el espectro de entrada <code class="docutils literal notranslate"><span class="pre">EDFA1000_r1.0_s50</span></code> al puerto 2 del WSS:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">w0sa&gt; SETP P2 -&gt; EDFA1000_r1.0_s50</span>
+</pre></div>
+</div>
+<p>Con <code class="docutils literal notranslate"><span class="pre">ls_ports</span></code> se puede corroborar que el espectro haya sido efectivamente asignado al puerto 2.</p>
+<p>El siguiente paso consiste en definir un plan de canales. El WSS <em>finisar flexigrid</em> cuenta con 386 <em>slots</em> de 12.5 GHz cada uno. Mediante el comando <code class="docutils literal notranslate"><span class="pre">DCC</span></code> (<em>Define Custom Channels</em>) es posible asignar <em>slots</em> a canales, de tal modo que <code class="docutils literal notranslate"><span class="pre">DCC</span> <span class="pre">1=1:8</span></code> significa que el canal 1 abarca desde el <em>slot</em> 1 al 8. A continuación se define un plan de 48 canales de 8 <em>slots</em> cada uno, es decir, un ancho de banda de 100.0 GHz por canal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">w0sa&gt; DCC 1=1:8;2=9:16;3=17:24;4=25:32;5=33:40;6=41:48;7=49:56;8=57:64;9=65:72;10=73:80;11=81:90;12=91:96;13=97:104;14=105:112;15=113:120;16=121:128;17=129:136;18=137:144;19=145:152;20=153:160;21=161:168;22=169:176;23=177:184;24=185:192;25=193:200;26=201:208;27=209:216;28=217:221;29=222:232;30=233:240;31=241:248;32=249:256;33=257:264;34=265:272;35=273:280;36=281:290;37=291:296;38=297:304;39=305:312;40=313:320;41=321:328;42=329:336;43=337:344;44=345:352;45=353:360;46=361:368;47=369:376;48=377:384</span>
+</pre></div>
+</div>
+<p>Una vez definido el plan de canales, a través de <code class="docutils literal notranslate"><span class="pre">URA</span></code> es posible asignar una entrada para un determinado canal y la atenuación deseada (max 20.0 dB). El comando <code class="docutils literal notranslate"><span class="pre">URA</span> <span class="pre">1,2,6.0</span></code> asocia el canal 1 con el puerto 2 y realiza una atenuación de 6.0 dB en ese canal, es decir todos los <em>slots</em> que conforman el canal, son atenuados 6.0 dB. El comando siguiente asocia canales a puertos y define las atenuaciones:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>En caso de asignar un canal a un puerto vacío (sin espectro definido), por defecto ese puerto estará asociado a un espectro con potencia 0.0 dBm en todas las longitudes de onda. Al trabajar con el WSS real, esto es una buena práctica para alcanzar los niveles de atenuación deseados.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">w0sa&gt; URA 1,2,14.0;2,2,14.0;3,2,15.0;4,2,16.0;5,2,16.0;6,2,17.0;7,2,17.0;8,2,17.0;9,2,17.0;10,2,18.0;11,2,18.0;12,2,0.0;13,2,0.0;14,2,0.0;15,2,0.0;16,2,0.0;17,2,0.0;18,2,0.0;19,2,0.0;20,2,0.0;21,2,0.0;22,2,0.0;23,2,0.0;24,2,0.0;25,2,0.0;26,2,0.0;27,2,0.0;28,2,0.0;29,2,20.0;30,2,20.0;31,2,20.0;32,2,20.0;33,2,20.0;34,2,20.0;35,2,20.0;36,2,20.0;37,2,3.0;38,2,6.0;39,2,8.0;40,2,11.0;41,2,14.0;42,2,16.0;43,2,16.0;44,2,16.0;45,2,16.0;46,2,15.0;47,2,13.0;48,2,12.0</span>
+</pre></div>
+</div>
+<p>Para efectuar la configuración recién definida en el WSS, se debe ingresar:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">w0sa&gt; RSW</span>
+</pre></div>
+</div>
+<p>Ya realizada la actualización del WSS solo queda visualizar el espectro resultante con:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">w0sa&gt; OSA_SHOW</span>
+</pre></div>
+</div>
+<p>El espectro resultante luce así:</p>
+<a class="reference internal image-reference" href="_images/getting_started_result.png"><img alt="_images/getting_started_result.png" class="align-center" src="_images/getting_started_result.png" style="width: 80%;" />
+</a>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="installation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Instalación</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="technical_ref.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Arquitectura</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Angelo Barbieri F.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, QuantumUBB.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

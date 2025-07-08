@@ -7,38 +7,33 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
+from scipy.ndimage import gaussian_filter1d
 
 class OSAmulator:
+    """
+    OSAmulator manages everything related with visualization.
+    """
 
     C = 299792458                                                               # m/s (light speed in air/vacuum)
-    
-    # default configuration
-    CENTER_WAVELENGTH = 1550                                                    # nm
-    SPAN_WAVELENGTH = 50                                                        # nm
-    START_WAVELENGTH = CENTER_WAVELENGTH - (SPAN_WAVELENGTH / 2)                # nm
-    STOP_WAVELENGTH = CENTER_WAVELENGTH + (SPAN_WAVELENGTH / 2)                 # nm
-    SAMPLING_POINTS = 501
-    OUTPUT_RESOLUTION = 1.0                                                     # nm
 
-    INPUT_RESOLUTION = 1.0                                                      # nm
+    def __init__(self, center_wavelength=1550.0, span_wavelength=50.0, sampling_points=501, output_resolution=1.0, input_resolution=1.0):
+        self.center_wavelength = center_wavelength
+        self.span_wavelength = span_wavelength
+        self.start_wavelength = center_wavelength - (span_wavelength / 2)
+        self.stop_wavelength = center_wavelength + (span_wavelength / 2)
+        self.sampling_points = sampling_points
+        self.output_resolution = output_resolution #OSA resolution
+        self.input_resolution = input_resolution
 
-    BIN_WIDTH = (STOP_WAVELENGTH - START_WAVELENGTH) / (SAMPLING_POINTS - 1)    # nm
-
-    def __init__(self):
-        self.center_wavelength = OSAmulator.CENTER_WAVELENGTH
-        self.span_wavelength = OSAmulator.SPAN_WAVELENGTH
-        self.start_wavelength = OSAmulator.START_WAVELENGTH
-        self.stop_wavelength = OSAmulator.STOP_WAVELENGTH
-        self.sampling_points = OSAmulator.SAMPLING_POINTS
-        self.output_resolution = OSAmulator.OUTPUT_RESOLUTION
-        self.input_resolution = OSAmulator.INPUT_RESOLUTION
-
-        self.bin_width = OSAmulator.BIN_WIDTH
+        self.bin_width = (self.stop_wavelength - self.start_wavelength) / (sampling_points - 1)
 
         self.calibrator = Calibration()
  
  
-    def spanning(self, center: float = CENTER_WAVELENGTH, span: int = SPAN_WAVELENGTH, points: int = SAMPLING_POINTS):
+    def spanning(self, center: float = 1550.0, span: int = 50.0, points: int = 501):
+        """
+        Modifies OSA visualization parameters: center, span, sampling points.
+        """
         
         self_center_wavelength = center
         self.span_wavelength = span
@@ -50,6 +45,9 @@ class OSAmulator:
         self.bin_width = (self.stop_wavelength - self.start_wavelength) / (self.sampling_points - 1)
 
     def resampling(self, data: dict = None):
+        """
+        Resamples data according to the sampling points.
+        """
         
         target_wavelength = [wv for wv in frange(self.start_wavelength, self.stop_wavelength+(self.bin_width/2), self.bin_width)]
         resampled_data = np.interp(target_wavelength, list(data.keys()), list(data.values()), left=np.min(list(data.values())), right=np.min(list(data.values())))
@@ -57,34 +55,55 @@ class OSAmulator:
         return target_wavelength, resampled_data
 
     def smoothing(self, data: dict = None):
-        
-        #spacing = list(data.keys())[1] - list(data.keys())[0]
-        #print(spacing)
-        #sigma = (self.output_resolution/spacing)/2.355
+        """
+        Performs a convolution between a 1D Gaussian kernel and the spectrum to handle OSA resolution.
+        """
 
-        #pwr_smoothed = gaussian_filter1d(list(data.values()), sigma, mode='reflect')
-        #return pwr_smoothed
-        
         delta = list(data.keys())[1] - list(data.keys())[0]
-        n_kernel = int(round(self.output_resolution/delta)) if int(round(self.output_resolution/delta))%2 else int(round(self.output_resolution/delta))+1
-        #print(n_kernel)
-        x = np.arange(n_kernel)-(n_kernel-1)/2
-        #print(x.shape)
-        sigma = (self.output_resolution/delta)/2.355
-        #print(sigma)
-        kernel = np.exp(-0.5*(x/sigma)**2)
-        kernel /= kernel.sum()
+        fwhm_bins = self.output_resolution / delta
+        sigma_bins = fwhm_bins / 2.355
+        truncate = (round(fwhm_bins) - 1)/2 / sigma_bins #truncate=radius/sigma
 
-        pwr_smoothed = np.convolve(list(data.values()), kernel, mode='same')
+        pwr_smoothed = gaussian_filter1d(
+            list(data.values()),
+            sigma=sigma_bins,
+            mode='constant', 
+            cval=0.0,
+            truncate=truncate,
+            radius=int((round(fwhm_bins)-1)/2)
+        )
+        
+        #delta = list(data.keys())[1] - list(data.keys())[0]
+        #n_kernel = int(round(self.output_resolution/delta)) if int(round(self.output_resolution/delta))%2 else int(round(self.output_resolution/delta))+1
+        ##print(n_kernel)
+        #x = np.arange(n_kernel)-(n_kernel-1)/2
+        ##print(x.shape)
+        #sigma = (self.output_resolution/delta)/2.355
+        ##print(sigma)
+        #kernel = np.exp(-0.5*(x/sigma)**2)
+        #kernel /= kernel.sum()
+
+        #pwr_smoothed = np.convolve(list(data.values()), kernel, mode='same')
         return pwr_smoothed
 
     def set_inres(self, inres: float = None):
+        """
+        Defines input resolution. Input resolution must match the input spectrum resolution. By default input resolution is 1.0 nm.
+        """
+
         self.input_resolution = inres
     
     def set_outres(self, outres: float = None):
+        """
+        Defines the disired OSA output resolution. Default value is 1.0 nm.
+        """
+
         self.output_resolution = outres
 
     def apply_attenuation(self, data: list = None):
+        """
+        Calls the calibrator object and applies power calibration to the spectrum.
+        """
 
         self.calibrator.get_attenuation(in_res=self.input_resolution, out_res=self.output_resolution)
         
@@ -92,6 +111,18 @@ class OSAmulator:
         #return data
 
     def show(self, data: dict = None, freq: bool = False, save: bool = False):
+        """
+        Main method of OSAmulator. This is intended to show the resulting spectrum.\n
+
+        Data flow:\n
+
+        1. Get resulting spectrum from WSSimulator.\n
+        2. Convert frequencies to wavelengths.\n
+        3. Apply Gaussian filter to manage resolution.\n
+        4. Convert power from mW to dBm.\n
+        5. Apply calibration.\n
+        6. Resampling the data based on the sampling points.
+        """
 
         plt.style.use('dark_background')
         fig, ax = plt.subplots(1,1,layout='constrained',figsize=(5,5))
@@ -136,6 +167,9 @@ class OSAmulator:
 
     
     def write(self, data: dict = None):
+        """
+        Stores the output spectrum as a csv file in w0sa/data/output_spectrum directory.
+        """
         
         date = datetime.now().strftime("%y%m%d")
         num = 0

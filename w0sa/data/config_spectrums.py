@@ -162,6 +162,8 @@ OUTPUT_SPECTRUMS = {
     "w0saCWDM_C_ri0.03_si50_ro0.07_so50": os.path.join(OUTPUT_SPECTRUMS_DIR, "w0sa250623_60.csv"),
     "w0saCWDM_C_ri0.03_si50_ro0.05_so50": os.path.join(OUTPUT_SPECTRUMS_DIR, "w0sa250623_61.csv"),
     "w0saCWDM_C_ri0.03_si50_ro0.03_so50": os.path.join(OUTPUT_SPECTRUMS_DIR, "w0sa250623_62.csv"),
+
+    "scipyw0saCWDM_C_ri1.0_si50_ro0.03_so50": os.path.join(OUTPUT_SPECTRUMS_DIR, "w0sa250707_0.csv"),
     # future entries here
 }
 
