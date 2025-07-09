@@ -17,10 +17,10 @@ class W0SAShell(cmd.Cmd):
                        ______                        
                       /      \                       
          __   __   __|  _____ \ _______  ______  
-        |  \ |  \ |  | /     \|/       \|      \   
-        |  | |  | |  | |     ||  ______| \_____ |
-        |  | |  | |  | |     ||\ |_____  ______||
-        |  |_/  |_/  | \_____/|_\_____ || _____ |
+        |  \ |  \ |  | /   / \|/       \|      \   
+        |  | |  | |  | |  /  ||  ______| \_____ |
+        |  | |  | |  | | /   ||\ |_____  ______||
+        |  |_/  |_/  | \/____/|_\_____ || _____ |
          \           |\       |        |\ \____||
           \____|\____| \_____/ \______/  \______|
     
@@ -51,15 +51,15 @@ class W0SAShell(cmd.Cmd):
 
     def do_ls_spectrums(self, arg):
         """
-        ES: Lista los espectros disponibles.\n
-        EN: Lists the available spectrums.
+        ES: Lista los espectros de entrada (EDFA) disponibles.\n
+        EN: Lists the available input (EDFA) spectrums.
 
         Example
         -------
         >>> ls_spectrums
         """
         for spectrum in INPUT_SPECTRUMS.keys():
-            print(f"{spectrum} -> {SPECTRUM_DESCRIPTION[spectrum]}")
+            print(f"{spectrum}")
 
     def do_ls_ports(self, arg):
         """
