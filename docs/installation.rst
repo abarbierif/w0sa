@@ -1,6 +1,10 @@
 Instalación
 ===========
 
+.. important::
+
+   Es necesario contar con ``python`` `<https://www.python.org/downloads/>`_ y ``git`` `<https://git-scm.com/downloads>`_ instalados.
+
 Para usar **w0sa** primero clona el repositorio usando ``git`` e ingresa al directorio:
 
 .. code-block:: console
@@ -21,7 +25,7 @@ En **Windows** (PowerShell):
 
 .. code-block:: console
 
-   $ python -m venv .venv
+   $ py -m venv .venv
    $ .\.venv\Scripts\Activate.ps1
 
 Instala el paquete (modo editable) e inicia **w0sa**:
