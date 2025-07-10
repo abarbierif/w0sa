@@ -1,0 +1,863 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Arquitectura &#8212; w0sa 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=a1637f0b"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'technical_ref';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Primeros pasos" href="getting_started.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">w0sa 0.1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Primeros pasos</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Arquitectura</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/technical_ref.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Arquitectura</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell"><code class="docutils literal notranslate"><span class="pre">W0SAShell</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_exit"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_exit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_clear"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_ls_spectrums"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_ls_spectrums()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_ls_ports"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_ls_ports()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_OSA_SHOW"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_OSA_SHOW()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_SINRES"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_SINRES()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_SOUTRES"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_SOUTRES()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_SSPAN"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_SSPAN()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_SETP"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_SETP()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_DCC"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_DCC()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_DCCS"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_DCCS()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_URA"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_URA()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_RSW"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_RSW()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_URAS"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_URAS()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_DCCG"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_DCCG()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_URAG"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_URAG()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_2dB"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_2dB()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_dB2"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_dB2()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator"><code class="docutils literal notranslate"><span class="pre">WSSimulator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator.prt_pwr_set"><code class="docutils literal notranslate"><span class="pre">WSSimulator.prt_pwr_set()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator.dcc_set"><code class="docutils literal notranslate"><span class="pre">WSSimulator.dcc_set()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator.ura_set"><code class="docutils literal notranslate"><span class="pre">WSSimulator.ura_set()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator.get_spectrum"><code class="docutils literal notranslate"><span class="pre">WSSimulator.get_spectrum()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator.get_dcc"><code class="docutils literal notranslate"><span class="pre">WSSimulator.get_dcc()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator.get_ura"><code class="docutils literal notranslate"><span class="pre">WSSimulator.get_ura()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator"><code class="docutils literal notranslate"><span class="pre">OSAmulator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.spanning"><code class="docutils literal notranslate"><span class="pre">OSAmulator.spanning()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.resampling"><code class="docutils literal notranslate"><span class="pre">OSAmulator.resampling()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.smoothing"><code class="docutils literal notranslate"><span class="pre">OSAmulator.smoothing()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.set_inres"><code class="docutils literal notranslate"><span class="pre">OSAmulator.set_inres()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.set_outres"><code class="docutils literal notranslate"><span class="pre">OSAmulator.set_outres()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.apply_attenuation"><code class="docutils literal notranslate"><span class="pre">OSAmulator.apply_attenuation()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.show"><code class="docutils literal notranslate"><span class="pre">OSAmulator.show()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.write"><code class="docutils literal notranslate"><span class="pre">OSAmulator.write()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.calibration.calibration.Calibration"><code class="docutils literal notranslate"><span class="pre">Calibration</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.calibration.calibration.Calibration.get_attenuation"><code class="docutils literal notranslate"><span class="pre">Calibration.get_attenuation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="arquitectura">
+<h1>Arquitectura<a class="headerlink" href="#arquitectura" title="Link to this heading">#</a></h1>
+<p><strong>w0sa</strong> está escrito en <em>python</em>. Este módulo comprende principalmente de 4 clases:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">W0SAShell(cmd.Cmd)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WSSimulator</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OSAmulator</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Calibration</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">W0SAShell(cmd.Cmd)</span></code> simula la CLI de un WSS <em>finisar flexigrid</em>. Acá, se definen los comandos permitidos, y los métodos se encargan de <em>parsear</em> los argumentos de entrada y pasarlos como argumentos a los métodos de las demás clases. <code class="docutils literal notranslate"><span class="pre">WSSimulator</span></code> posee estructuras de datos y métodos para simular el funcionamiento de un WSS. Sus métodos modifican las estructuras de datos y por ende el estado del simulador. <code class="docutils literal notranslate"><span class="pre">OSAmulator</span></code> configura la visualización y muestra el espectro en la salida del WSS. <code class="docutils literal notranslate"><span class="pre">Calibration</span></code> es la clase encargada de realizar los ajustes necesarios sobre el espectro del WSS para obtener resultados similares a una respuesta real.</p>
+<p>La resolución del simulador del WSS es 6.25 GHz (la mitad del ancho de banda de cada <em>slot</em>). De este modo, cada <em>slot</em> está representado por tres frecuencias correspondientes a la frecuencia central del <em>slot</em> y las dos frecuencias bordes (frecuencia central +- 6.25 GHz). Por lo tanto, la atenuación definida por <code class="docutils literal notranslate"><span class="pre">URA</span></code> para un determinado canal se aplica a las tres frecuencias de cada <em>slot</em> que conforman el canal.</p>
+<p>Un OSA se compone principalmente de un <em>monocromador</em> y un <em>fotodetector</em>. El <em>monocromador</em> actúa como un filtro óptico sintonizable que selecciona un rango estrecho de longitudes de onda alrededor de una longitud de onda central. Por su parte, el <em>fotodetector</em> mide la potencia de la luz que pasa a través de este filtro. Al modificar la longitud de onda central del filtro, es posible realizar un barrido y obtener así un espectro en un rango extendido de longitudes de onda. La respuesta espectral de dicho filtro se aproxima comúnmente a la de un filtro <em>Gaussiano</em>. La <strong>resolución del OSA</strong> se especifica a partir del <strong>ancho de banda efectivo del filtro a -3 dB</strong>, también conocido como <em>Full Width at Half Maximum</em> (FWHM) (ver Figura de abajo). Esto significa que la resolución corresponde a la diferencia entre las longitudes de onda donde la respuesta del filtro cae a la mitad de su potencia máxima.</p>
+<a class="reference internal image-reference" href="_images/FWHM.svg"><img alt="_images/FWHM.svg" class="align-center" src="_images/FWHM.svg" style="width: 60%;" />
+</a>
+<p>La función de transferencia <em>Gaussiana</em> se expresa como:</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)\]</div>
+<p>Dado que la resolución del OSA se define como el ancho de banda entre los puntos que presentan una respuesta a -3 dB (la mitad de la potencia máxima), se obtiene:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right) &amp;= 0.5 \\
+-\frac{x^{2}}{2\sigma^{2}} &amp;= \ln{0.5} \\
+\frac{x^{2}}{2\sigma^{2}} &amp;= \ln{2} \\
+x^{2} &amp;= 2\sigma^{2}\ln{2} \\
+x &amp;= \pm \sigma \sqrt{2\ln{2}}\end{split}\]</div>
+<p>Por lo tanto, la relación entre FWHM (resolución OSA) y la desviación estándar del filtro es:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{FWHM}
+= x_{right} - x_{left}
+= 2 \sigma \sqrt{2 \ln{2}}
+\approx 2.355 \sigma\]</div>
+<p>Con lo anterior, se encuentra la desviación estándar como:</p>
+<div class="math notranslate nohighlight">
+\[\sigma = \frac{\mathrm{FWHM}}{2.355}\]</div>
+<p>Lo anterior se implementa en el método <code class="docutils literal notranslate"><span class="pre">smoothing</span></code> de la clase <code class="docutils literal notranslate"><span class="pre">OSAmulator</span></code>, el cual aplica un filtro <em>Gaussiano</em> 1D para emular la resolución del OSA real.</p>
+<p>Para la calibración de potencia, se define un <em>offset</em> base de <code class="docutils literal notranslate"><span class="pre">5.0</span> <span class="pre">dB</span></code> dado por la diferencia de los espectros <code class="docutils literal notranslate"><span class="pre">CWDM_r1.0_s50</span></code> (extraido de un OSA real) y <code class="docutils literal notranslate"><span class="pre">w0saCWDM_r1.0_s50</span></code> (generado por <code class="docutils literal notranslate"><span class="pre">w0sa</span></code> utilizando la misma configuración). Cabe destacar que la entrada a <code class="docutils literal notranslate"><span class="pre">w0sa</span></code> es un espectro <code class="docutils literal notranslate"><span class="pre">EDFA1000_r1.0_s50</span></code>. Con esto se determina un factor de calibración dado por:</p>
+<div class="math notranslate nohighlight">
+\[\Delta_{cal} = base_{offset} - 10 \cdot \log\frac{res_{base}}{res_{in}} + 10 \cdot \log\frac{res_{base}}{res_{OSA}}\]</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>La resolución del espectro de entrada debe coincidir con la resolución de entrada en <code class="docutils literal notranslate"><span class="pre">w0sa</span></code> (resolución del espectro EDFA). Esto debe ser configurado manualmente por el usuario mediante el comando <code class="docutils literal notranslate"><span class="pre">SINRES</span></code>.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Al realizar una comparación de resultados entre <code class="docutils literal notranslate"><span class="pre">w0sa</span></code> y un expectro extraido desde un OSA real, las resoluciones de salida deben ser identicas en ambos casos. Es decir, sería incorrecta una comparación entre <code class="docutils literal notranslate"><span class="pre">CWDM_r1.0_s50</span></code> y <code class="docutils literal notranslate"><span class="pre">w0saCWDM_ri1.0_si50_ro0.5_so50</span></code> debido a que la resolución de salida del espectro real es <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">nm</span></code> mientras la del espectro simulado es <code class="docutils literal notranslate"><span class="pre">0.5</span> <span class="pre">nm</span></code>. Una comparación correcta sería entre los espectros <code class="docutils literal notranslate"><span class="pre">CWDM_r0.5_s50</span></code> y <code class="docutils literal notranslate"><span class="pre">w0saCWDM_ri1.0_si50_ro0.5_so50</span></code>. El script <code class="docutils literal notranslate"><span class="pre">w0sa/data/comparator.py</span></code> posee una función que facilita la comparación entre dos espectros.</p>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">w0sa.cli.shell.</span></span><span class="sig-name descname"><span class="pre">W0SAShell</span></span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell" title="Link to this definition">#</a></dt>
+<dd><p>W0SAShell class is intended to simulate real WSS interaction.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_exit">
+<span class="sig-name descname"><span class="pre">do_exit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_exit" title="Link to this definition">#</a></dt>
+<dd><p>ES: Sale de la interfaz de línea de comandos de w0sa.</p>
+<p>EN: Exits the w0sa CLI.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_clear">
+<span class="sig-name descname"><span class="pre">do_clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_clear" title="Link to this definition">#</a></dt>
+<dd><p>ES: Limpia la pantalla del terminal.</p>
+<p>EN: Clears the terminal screen.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_ls_spectrums">
+<span class="sig-name descname"><span class="pre">do_ls_spectrums</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_ls_spectrums" title="Link to this definition">#</a></dt>
+<dd><p>ES: Lista los espectros de entrada (EDFA) disponibles.</p>
+<p>EN: Lists the available input (EDFA) spectrums.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ls_spectrums</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_ls_ports">
+<span class="sig-name descname"><span class="pre">do_ls_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_ls_ports" title="Link to this definition">#</a></dt>
+<dd><p>ES: Lista la configuración actual de puertos.</p>
+<p>EN: Lists current ports configuration.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ls_ports</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_OSA_SHOW">
+<span class="sig-name descname"><span class="pre">do_OSA_SHOW</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_OSA_SHOW" title="Link to this definition">#</a></dt>
+<dd><p>ES: Muestra el espectro óptico medido por el OSA (Analizador de Espectro Óptico) simulado.</p>
+<p>EN: Displays the optical spectrum measured by the wssulated OSA (Optical Spectrum Analyzer).</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">OSA_SHOW</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OSA_SHOW</span> <span class="o">-</span><span class="n">wv</span> <span class="c1">#default</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OSA_SHOW</span> <span class="o">-</span><span class="n">fq</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OSA_SHOW</span> <span class="o">-</span><span class="n">save</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_SINRES">
+<span class="sig-name descname"><span class="pre">do_SINRES</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_SINRES" title="Link to this definition">#</a></dt>
+<dd><p>ES: Define la resolución de entrada.</p>
+<p>EN: Sets input resolution.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SINRES</span> <span class="mf">1.0</span> <span class="c1">#default</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SINRES</span> <span class="mf">0.03</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_SOUTRES">
+<span class="sig-name descname"><span class="pre">do_SOUTRES</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_SOUTRES" title="Link to this definition">#</a></dt>
+<dd><p>ES: Define la resolución de salida.</p>
+<p>EN: Sets output resolution.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SOUTRES</span> <span class="mf">1.0</span> <span class="c1">#default</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SOUTRES</span> <span class="mf">0.2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_SSPAN">
+<span class="sig-name descname"><span class="pre">do_SSPAN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_SSPAN" title="Link to this definition">#</a></dt>
+<dd><p>ES: Define el span del OSA.</p>
+<p>EN: Sets OSA span.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SSPAN</span> <span class="mf">50.0</span> <span class="c1">#default</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SSPAN</span> <span class="mf">35.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_SETP">
+<span class="sig-name descname"><span class="pre">do_SETP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_SETP" title="Link to this definition">#</a></dt>
+<dd><p>ES: Define el espectro de entrada (en dBm) de un puerto del WSS.</p>
+<p>EN: Sets the input spectrum (in dBm) of a WSS input port.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SETP</span> <span class="n">P2</span> <span class="o">-&gt;</span> <span class="n">EDFA1000_r1</span><span class="mf">.0</span><span class="n">_s50</span> <span class="c1">#default</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SETP</span> <span class="n">P9</span> <span class="o">-&gt;</span> <span class="n">EDFA1000_r0</span><span class="mf">.03</span><span class="n">_s50</span> <span class="c1">#Maximum port (P1-P9)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_DCC">
+<span class="sig-name descname"><span class="pre">do_DCC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_DCC" title="Link to this definition">#</a></dt>
+<dd><p>ES: Define los rangos de slots para cada canal lógico en el WSS.</p>
+<p>EN: Defines slot ranges for each logical channel in the WSS.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">DCC</span> <span class="mi">1</span><span class="o">=</span><span class="mi">90</span><span class="p">:</span><span class="mi">93</span><span class="p">;</span> <span class="mi">2</span><span class="o">=</span><span class="mi">94</span><span class="p">:</span><span class="mi">94</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">DCC</span> <span class="mi">1</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">;</span><span class="mi">2</span><span class="o">=</span><span class="mi">9</span><span class="p">:</span><span class="mi">16</span><span class="p">;</span><span class="mi">3</span><span class="o">=</span><span class="mi">17</span><span class="p">:</span><span class="mi">24</span><span class="p">;</span><span class="mi">4</span><span class="o">=</span><span class="mi">25</span><span class="p">:</span><span class="mi">32</span><span class="p">;</span><span class="mi">5</span><span class="o">=</span><span class="mi">33</span><span class="p">:</span><span class="mi">40</span><span class="p">;</span><span class="mi">6</span><span class="o">=</span><span class="mi">41</span><span class="p">:</span><span class="mi">48</span><span class="p">;</span><span class="mi">7</span><span class="o">=</span><span class="mi">49</span><span class="p">:</span><span class="mi">56</span><span class="p">;</span><span class="mi">8</span><span class="o">=</span><span class="mi">57</span><span class="p">:</span><span class="mi">64</span><span class="p">;</span><span class="mi">9</span><span class="o">=</span><span class="mi">65</span><span class="p">:</span><span class="mi">72</span><span class="p">;</span><span class="mi">10</span><span class="o">=</span><span class="mi">73</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span><span class="mi">11</span><span class="o">=</span><span class="mi">81</span><span class="p">:</span><span class="mi">90</span><span class="p">;</span><span class="mi">12</span><span class="o">=</span><span class="mi">91</span><span class="p">:</span><span class="mi">96</span><span class="p">;</span><span class="mi">13</span><span class="o">=</span><span class="mi">97</span><span class="p">:</span><span class="mi">104</span><span class="p">;</span><span class="mi">14</span><span class="o">=</span><span class="mi">105</span><span class="p">:</span><span class="mi">112</span><span class="p">;</span><span class="mi">15</span><span class="o">=</span><span class="mi">113</span><span class="p">:</span><span class="mi">120</span><span class="p">;</span><span class="mi">16</span><span class="o">=</span><span class="mi">121</span><span class="p">:</span><span class="mi">128</span><span class="p">;</span><span class="mi">17</span><span class="o">=</span><span class="mi">129</span><span class="p">:</span><span class="mi">136</span><span class="p">;</span><span class="mi">18</span><span class="o">=</span><span class="mi">137</span><span class="p">:</span><span class="mi">144</span><span class="p">;</span><span class="mi">19</span><span class="o">=</span><span class="mi">145</span><span class="p">:</span><span class="mi">152</span><span class="p">;</span><span class="mi">20</span><span class="o">=</span><span class="mi">153</span><span class="p">:</span><span class="mi">160</span><span class="p">;</span><span class="mi">21</span><span class="o">=</span><span class="mi">161</span><span class="p">:</span><span class="mi">168</span><span class="p">;</span><span class="mi">22</span><span class="o">=</span><span class="mi">169</span><span class="p">:</span><span class="mi">176</span><span class="p">;</span><span class="mi">23</span><span class="o">=</span><span class="mi">177</span><span class="p">:</span><span class="mi">184</span><span class="p">;</span><span class="mi">24</span><span class="o">=</span><span class="mi">185</span><span class="p">:</span><span class="mi">192</span><span class="p">;</span><span class="mi">25</span><span class="o">=</span><span class="mi">193</span><span class="p">:</span><span class="mi">200</span><span class="p">;</span><span class="mi">26</span><span class="o">=</span><span class="mi">201</span><span class="p">:</span><span class="mi">208</span><span class="p">;</span><span class="mi">27</span><span class="o">=</span><span class="mi">209</span><span class="p">:</span><span class="mi">216</span><span class="p">;</span><span class="mi">28</span><span class="o">=</span><span class="mi">217</span><span class="p">:</span><span class="mi">221</span><span class="p">;</span><span class="mi">29</span><span class="o">=</span><span class="mi">222</span><span class="p">:</span><span class="mi">232</span><span class="p">;</span><span class="mi">30</span><span class="o">=</span><span class="mi">233</span><span class="p">:</span><span class="mi">240</span><span class="p">;</span><span class="mi">31</span><span class="o">=</span><span class="mi">241</span><span class="p">:</span><span class="mi">248</span><span class="p">;</span><span class="mi">32</span><span class="o">=</span><span class="mi">249</span><span class="p">:</span><span class="mi">256</span><span class="p">;</span><span class="mi">33</span><span class="o">=</span><span class="mi">257</span><span class="p">:</span><span class="mi">264</span><span class="p">;</span><span class="mi">34</span><span class="o">=</span><span class="mi">265</span><span class="p">:</span><span class="mi">272</span><span class="p">;</span><span class="mi">35</span><span class="o">=</span><span class="mi">273</span><span class="p">:</span><span class="mi">280</span><span class="p">;</span><span class="mi">36</span><span class="o">=</span><span class="mi">281</span><span class="p">:</span><span class="mi">290</span><span class="p">;</span><span class="mi">37</span><span class="o">=</span><span class="mi">291</span><span class="p">:</span><span class="mi">296</span><span class="p">;</span><span class="mi">38</span><span class="o">=</span><span class="mi">297</span><span class="p">:</span><span class="mi">304</span><span class="p">;</span><span class="mi">39</span><span class="o">=</span><span class="mi">305</span><span class="p">:</span><span class="mi">312</span><span class="p">;</span><span class="mi">40</span><span class="o">=</span><span class="mi">313</span><span class="p">:</span><span class="mi">320</span><span class="p">;</span><span class="mi">41</span><span class="o">=</span><span class="mi">321</span><span class="p">:</span><span class="mi">328</span><span class="p">;</span><span class="mi">42</span><span class="o">=</span><span class="mi">329</span><span class="p">:</span><span class="mi">336</span><span class="p">;</span><span class="mi">43</span><span class="o">=</span><span class="mi">337</span><span class="p">:</span><span class="mi">344</span><span class="p">;</span><span class="mi">44</span><span class="o">=</span><span class="mi">345</span><span class="p">:</span><span class="mi">352</span><span class="p">;</span><span class="mi">45</span><span class="o">=</span><span class="mi">353</span><span class="p">:</span><span class="mi">360</span><span class="p">;</span><span class="mi">46</span><span class="o">=</span><span class="mi">361</span><span class="p">:</span><span class="mi">368</span><span class="p">;</span><span class="mi">47</span><span class="o">=</span><span class="mi">369</span><span class="p">:</span><span class="mi">376</span><span class="p">;</span><span class="mi">48</span><span class="o">=</span><span class="mi">377</span><span class="p">:</span><span class="mi">384</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_DCCS">
+<span class="sig-name descname"><span class="pre">do_DCCS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_DCCS" title="Link to this definition">#</a></dt>
+<dd><p>ES: Muestra el estado actual de la configuración de canales.</p>
+<p>EN: Displays the current channel configuration status.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">DCCS</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_URA">
+<span class="sig-name descname"><span class="pre">do_URA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_URA" title="Link to this definition">#</a></dt>
+<dd><p>ES: Asocia un puerto de entrada a un canal lógico y aplica una atenuación en dB.</p>
+<p>EN: Assigns an input port to a logical channel and applies attenuation in dB.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">URA</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span> <span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">20.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">URA</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">14.0</span><span class="p">;</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">14.0</span><span class="p">;</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">15.0</span><span class="p">;</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">16.0</span><span class="p">;</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">16.0</span><span class="p">;</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">17.0</span><span class="p">;</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">17.0</span><span class="p">;</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">17.0</span><span class="p">;</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">17.0</span><span class="p">;</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">18.0</span><span class="p">;</span><span class="mi">11</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">18.0</span><span class="p">;</span><span class="mi">12</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">13</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">14</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">16</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">17</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">18</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">19</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">20</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">21</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">22</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">23</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">24</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">25</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">26</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">27</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">28</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">;</span><span class="mi">29</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">20.0</span><span class="p">;</span><span class="mi">30</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">20.0</span><span class="p">;</span><span class="mi">31</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">20.0</span><span class="p">;</span><span class="mi">32</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">20.0</span><span class="p">;</span><span class="mi">33</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">20.0</span><span class="p">;</span><span class="mi">34</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">20.0</span><span class="p">;</span><span class="mi">35</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">20.0</span><span class="p">;</span><span class="mi">36</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">20.0</span><span class="p">;</span><span class="mi">37</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">3.0</span><span class="p">;</span><span class="mi">38</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">6.0</span><span class="p">;</span><span class="mi">39</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">8.0</span><span class="p">;</span><span class="mi">40</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">11.0</span><span class="p">;</span><span class="mi">41</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">14.0</span><span class="p">;</span><span class="mi">42</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">16.0</span><span class="p">;</span><span class="mi">43</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">16.0</span><span class="p">;</span><span class="mi">44</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">16.0</span><span class="p">;</span><span class="mi">45</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">16.0</span><span class="p">;</span><span class="mi">46</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">15.0</span><span class="p">;</span><span class="mi">47</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">13.0</span><span class="p">;</span><span class="mi">48</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">12.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_RSW">
+<span class="sig-name descname"><span class="pre">do_RSW</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_RSW" title="Link to this definition">#</a></dt>
+<dd><p>ES: Actualiza el WSS con el plan de canales reconfigurado.</p>
+<p>EN: Updates the WSS with the reconfigured channel plan.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">RSW</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_URAS">
+<span class="sig-name descname"><span class="pre">do_URAS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_URAS" title="Link to this definition">#</a></dt>
+<dd><p>ES: Muestra el estado actual de la configuración de canales.</p>
+<p>EN: Displays the current channel configuration status.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">URAS</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_DCCG">
+<span class="sig-name descname"><span class="pre">do_DCCG</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_DCCG" title="Link to this definition">#</a></dt>
+<dd><p>ES: Genera un comando DCC por defecto.</p>
+<p>EN: Generates a default DCC command.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">DCCG</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_URAG">
+<span class="sig-name descname"><span class="pre">do_URAG</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_URAG" title="Link to this definition">#</a></dt>
+<dd><p>ES: Genera un comando URA desde un espectro de salida.</p>
+<p>EN: Generates an URA command from an output spectrum.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">URAG</span> <span class="n">DWDM_r1</span><span class="mf">.0</span><span class="n">_s50</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_2dB">
+<span class="sig-name descname"><span class="pre">do_2dB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_2dB" title="Link to this definition">#</a></dt>
+<dd><p>ES: Convierte de mW a dB.</p>
+<p>EN: Converts mW to dB.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="n">dB</span> <span class="mf">371.3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.cli.shell.W0SAShell.do_dB2">
+<span class="sig-name descname"><span class="pre">do_dB2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.cli.shell.W0SAShell.do_dB2" title="Link to this definition">#</a></dt>
+<dd><p>ES: Convierte de dB a mW.</p>
+<p>EN: Converts dBm to mW.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dB2</span> <span class="mf">3.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="w0sa.core.wss_simulator.WSSimulator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">w0sa.core.wss_simulator.</span></span><span class="sig-name descname"><span class="pre">WSSimulator</span></span><a class="headerlink" href="#w0sa.core.wss_simulator.WSSimulator" title="Link to this definition">#</a></dt>
+<dd><p>WSSimulator class simulates a real WSS.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.wss_simulator.WSSimulator.prt_pwr_set">
+<span class="sig-name descname"><span class="pre">prt_pwr_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.wss_simulator.WSSimulator.prt_pwr_set" title="Link to this definition">#</a></dt>
+<dd><p>Sets an input optical spectrum to a port.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.wss_simulator.WSSimulator.dcc_set">
+<span class="sig-name descname"><span class="pre">dcc_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sli</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.wss_simulator.WSSimulator.dcc_set" title="Link to this definition">#</a></dt>
+<dd><p>Defines a channel plan.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.wss_simulator.WSSimulator.ura_set">
+<span class="sig-name descname"><span class="pre">ura_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.wss_simulator.WSSimulator.ura_set" title="Link to this definition">#</a></dt>
+<dd><p>Assgins channels to ports and defines attenuations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.wss_simulator.WSSimulator.get_spectrum">
+<span class="sig-name descname"><span class="pre">get_spectrum</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.wss_simulator.WSSimulator.get_spectrum" title="Link to this definition">#</a></dt>
+<dd><p>Generates the output spectrum.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.wss_simulator.WSSimulator.get_dcc">
+<span class="sig-name descname"><span class="pre">get_dcc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.wss_simulator.WSSimulator.get_dcc" title="Link to this definition">#</a></dt>
+<dd><p>Generates a DCC command.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.wss_simulator.WSSimulator.get_ura">
+<span class="sig-name descname"><span class="pre">get_ura</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spectrum_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.wss_simulator.WSSimulator.get_ura" title="Link to this definition">#</a></dt>
+<dd><p>Generates an URA command.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="w0sa.core.osa_simulator.OSAmulator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">w0sa.core.osa_simulator.</span></span><span class="sig-name descname"><span class="pre">OSAmulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center_wavelength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1550.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">span_wavelength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">501</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.osa_simulator.OSAmulator" title="Link to this definition">#</a></dt>
+<dd><p>OSAmulator manages everything related with visualization.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.osa_simulator.OSAmulator.spanning">
+<span class="sig-name descname"><span class="pre">spanning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1550.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">span</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">501</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.osa_simulator.OSAmulator.spanning" title="Link to this definition">#</a></dt>
+<dd><p>Modifies OSA visualization parameters: center, span, sampling points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.osa_simulator.OSAmulator.resampling">
+<span class="sig-name descname"><span class="pre">resampling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.osa_simulator.OSAmulator.resampling" title="Link to this definition">#</a></dt>
+<dd><p>Resamples data according to the sampling points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.osa_simulator.OSAmulator.smoothing">
+<span class="sig-name descname"><span class="pre">smoothing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.osa_simulator.OSAmulator.smoothing" title="Link to this definition">#</a></dt>
+<dd><p>Performs a convolution between a 1D Gaussian kernel and the spectrum to handle OSA resolution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.osa_simulator.OSAmulator.set_inres">
+<span class="sig-name descname"><span class="pre">set_inres</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inres</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.osa_simulator.OSAmulator.set_inres" title="Link to this definition">#</a></dt>
+<dd><p>Defines input resolution. Input resolution must match the input spectrum resolution. By default input resolution is 1.0 nm.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.osa_simulator.OSAmulator.set_outres">
+<span class="sig-name descname"><span class="pre">set_outres</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outres</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.osa_simulator.OSAmulator.set_outres" title="Link to this definition">#</a></dt>
+<dd><p>Defines the disired OSA output resolution. Default value is 1.0 nm.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.osa_simulator.OSAmulator.apply_attenuation">
+<span class="sig-name descname"><span class="pre">apply_attenuation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.osa_simulator.OSAmulator.apply_attenuation" title="Link to this definition">#</a></dt>
+<dd><p>Calls the calibrator object and applies power calibration to the spectrum.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.osa_simulator.OSAmulator.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.osa_simulator.OSAmulator.show" title="Link to this definition">#</a></dt>
+<dd><p>Main method of OSAmulator. This is intended to show the resulting spectrum.</p>
+<p>Data flow:</p>
+<ol class="arabic simple">
+<li><p>Get resulting spectrum from WSSimulator.</p></li>
+<li><p>Convert frequencies to wavelengths.</p></li>
+<li><p>Apply Gaussian filter to manage resolution.</p></li>
+<li><p>Convert power from mW to dBm.</p></li>
+<li><p>Apply calibration.</p></li>
+<li><p>Resampling the data based on the sampling points.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.core.osa_simulator.OSAmulator.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.core.osa_simulator.OSAmulator.write" title="Link to this definition">#</a></dt>
+<dd><p>Stores the output spectrum as a csv file in w0sa/data/output_spectrum directory.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="w0sa.calibration.calibration.Calibration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">w0sa.calibration.calibration.</span></span><span class="sig-name descname"><span class="pre">Calibration</span></span><a class="headerlink" href="#w0sa.calibration.calibration.Calibration" title="Link to this definition">#</a></dt>
+<dd><p>Calibration class performs the necessary calibration process to reach real output data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="w0sa.calibration.calibration.Calibration.get_attenuation">
+<span class="sig-name descname"><span class="pre">get_attenuation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_res</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_res</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#w0sa.calibration.calibration.Calibration.get_attenuation" title="Link to this definition">#</a></dt>
+<dd><p>Computes the neccesary power calibration based on input resolution (EDFA resolution) and the desired OSA output resolution.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="getting_started.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Primeros pasos</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell"><code class="docutils literal notranslate"><span class="pre">W0SAShell</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_exit"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_exit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_clear"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_ls_spectrums"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_ls_spectrums()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_ls_ports"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_ls_ports()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_OSA_SHOW"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_OSA_SHOW()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_SINRES"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_SINRES()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_SOUTRES"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_SOUTRES()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_SSPAN"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_SSPAN()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_SETP"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_SETP()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_DCC"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_DCC()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_DCCS"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_DCCS()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_URA"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_URA()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_RSW"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_RSW()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_URAS"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_URAS()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_DCCG"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_DCCG()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_URAG"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_URAG()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_2dB"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_2dB()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.cli.shell.W0SAShell.do_dB2"><code class="docutils literal notranslate"><span class="pre">W0SAShell.do_dB2()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator"><code class="docutils literal notranslate"><span class="pre">WSSimulator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator.prt_pwr_set"><code class="docutils literal notranslate"><span class="pre">WSSimulator.prt_pwr_set()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator.dcc_set"><code class="docutils literal notranslate"><span class="pre">WSSimulator.dcc_set()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator.ura_set"><code class="docutils literal notranslate"><span class="pre">WSSimulator.ura_set()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator.get_spectrum"><code class="docutils literal notranslate"><span class="pre">WSSimulator.get_spectrum()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator.get_dcc"><code class="docutils literal notranslate"><span class="pre">WSSimulator.get_dcc()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.wss_simulator.WSSimulator.get_ura"><code class="docutils literal notranslate"><span class="pre">WSSimulator.get_ura()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator"><code class="docutils literal notranslate"><span class="pre">OSAmulator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.spanning"><code class="docutils literal notranslate"><span class="pre">OSAmulator.spanning()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.resampling"><code class="docutils literal notranslate"><span class="pre">OSAmulator.resampling()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.smoothing"><code class="docutils literal notranslate"><span class="pre">OSAmulator.smoothing()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.set_inres"><code class="docutils literal notranslate"><span class="pre">OSAmulator.set_inres()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.set_outres"><code class="docutils literal notranslate"><span class="pre">OSAmulator.set_outres()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.apply_attenuation"><code class="docutils literal notranslate"><span class="pre">OSAmulator.apply_attenuation()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.show"><code class="docutils literal notranslate"><span class="pre">OSAmulator.show()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.core.osa_simulator.OSAmulator.write"><code class="docutils literal notranslate"><span class="pre">OSAmulator.write()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.calibration.calibration.Calibration"><code class="docutils literal notranslate"><span class="pre">Calibration</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w0sa.calibration.calibration.Calibration.get_attenuation"><code class="docutils literal notranslate"><span class="pre">Calibration.get_attenuation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Angelo Barbieri F.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, QuantumUBB.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
