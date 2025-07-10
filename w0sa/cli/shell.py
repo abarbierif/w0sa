@@ -33,6 +33,7 @@ class W0SAShell(cmd.Cmd):
         super().__init__()
         self.wss = WSSimulator()
         self.osa = OSAmulator()
+        self.iRSW = False #var intended to track initial RSW
     
     def do_exit(self, arg):
         """
@@ -106,7 +107,7 @@ class W0SAShell(cmd.Cmd):
         else:
             save = False
         
-        wss_spectrum = self.wss.spectrum
+        wss_spectrum = self.wss.spectrum if self.iRSW else self.wss.none_spectrum
         self.osa.show(data=wss_spectrum, freq=freq, save=save)
 
     def do_SINRES(self, arg):
@@ -299,6 +300,7 @@ class W0SAShell(cmd.Cmd):
         self.wss.channels_status = copy.deepcopy(self.wss.channels)
         self.wss.spectrum = {}
         self.wss.get_spectrum()
+        self.iRSW = True
 
     def do_URAS(self, arg):
         """
