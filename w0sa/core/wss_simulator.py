@@ -40,7 +40,7 @@ class WSSimulator:
         self.none_spectrum = {fq:0.0 for fq in self.frequencies}
         self.ports = {'P'+str(_):{'spectrum_id':None,'spectrum':None} for _ in range(1,WSSimulator.MAX_PORTS+1)}
         
-        self.channels = {ch:{'sli':sli,'slf':sli+3,'prt':None,'atn':None} for ch,sli in zip(range(1,97),range(1,382,4))} # default channels plan
+        self.channels = {ch:{'sli':sli,'slf':sli+3,'prt':None,'atn':0.0} for ch,sli in zip(range(1,97),range(1,382,4))} # default channels plan
         self.channels_status = copy.deepcopy(self.channels) # for status commands
 
 
@@ -83,8 +83,9 @@ class WSSimulator:
             elif atn and atn > WSSimulator.MAX_ATTENUATION:
                 print(f"WARNING: MAX ATTENUATION ({WSSimulator.MAX_ATTENUATION}) EXCEEDED IN CHANNEL {ch}")
                 #atn = WSSimulator.MAX_ATTENUATION
-
-            source_spectrum = self.none_spectrum if self.ports[prt]['spectrum_id'] is None else self.ports[prt]['spectrum']
+            
+            
+            source_spectrum = self.none_spectrum if prt is None or self.ports[prt]['spectrum_id'] is None else self.ports[prt]['spectrum']
 
             for sl in range(ch_config['sli'], ch_config['slf']+1):
                 slot = self.slots.get(sl)
